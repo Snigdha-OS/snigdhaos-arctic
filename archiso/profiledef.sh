@@ -3,8 +3,8 @@
 
 iso_name="snigdhaos-arctic"
 iso_label="snigdhaos-arctic-v5.0"
-iso_publisher="SnigdhaOS <http://www.snigdhaos.org>"
-iso_application="SnigdhaOS Live/Rescue CD"
+iso_publisher="Snigdha OS <http://www.snigdhaos.org>"
+iso_application="Snigdha OS Live/Rescue CD"
 iso_version="v5.0"
 install_dir="arch"
 buildmodes=('iso')

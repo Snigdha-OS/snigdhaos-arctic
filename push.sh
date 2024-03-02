@@ -8,7 +8,7 @@
 # NOTE: HOST = GitHub, Gitlab, Bitbucket etc.  
 
 # Repo Config
-REPO=snigdhaos-backgrounds
+REPO=snigdhaos-arctic
 # Host Config
 HOST=https://github.com
 # Destination Config

@@ -148,4 +148,45 @@ echo
     echo
     echo "Downloading Latest .bashrc from Snigdha-OS/snigdhaos-root"
     echo
-    wget 
+    wget https://raw.githubusercontent.com/Snigdha-OS/snigdhaos-roots/master/.bashrc -O $buildFolder/archiso/airootfs/etc/skel/.bashrc
+    echo
+    echo "Removing old packages.x86_64 from build folder..."
+    rm $buildFolder/archiso/packages.x86_64
+    echo "Removing Personal Packages..."
+    rm $buildFolder/archiso/personal-packages.x86_64
+    echo
+    echo "Copying the latest packages.x86_64..."
+    cp -f ../archiso/packages.x86_64 $buildFolder/archiso/packages.x86_64
+    echo 
+
+    if [ $personalrepo == true ]; then
+        echo "Adding Packages From Personal Repository..."
+        printf "\n" | sudo tee -a $buildFolder/archiso/packages.x86_64
+        cat ../archiso/personal-packages.x86_64 | sudo tee -a $buildFolder/archiso/personal-packages.x86_64
+    fi
+
+    if [ $personalrepo == true ]; then
+        echo "Adding snigdhaos-personal repo /etc/pacman.conf"
+        printf "\n" | sudo tee -a $buildFolder/archiso/pacman.conf
+        printf "\n" | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+        cat snigdhaos-personal | sudo tee -a $buildFolder/archiso/pacman.conf
+        cat snigdhaos-personal | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+    fi
+
+    if [ $chaoticaur == true ]; then
+        echo "Adding chaotc-AUR to etc/pacman.conf..."
+        printf "\n" | sudo tee -a $buildFolder/archiso/pacman.conf
+        printf "\n" | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+        cat chaotic-aur | sudo tee -a $buildFolder/archiso/pacman.conf
+        cat chaotic-aur | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+    fi
+
+    if [ $blackarchaur == true ]; then
+        echo "Adding blackarch-AUR to etc/pacman.conf..."
+        printf "\n" | sudo tee -a $buildFolder/archiso/pacman.conf
+        printf "\n" | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+        cat blackarch | sudo tee -a $buildFolder/archiso/pacman.conf
+        cat blackarch | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
+    fi
+
+    

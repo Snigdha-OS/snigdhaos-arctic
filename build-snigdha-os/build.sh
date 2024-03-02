@@ -189,4 +189,49 @@ echo
         cat blackarch | sudo tee -a $buildFolder/archiso/airootfs/etc/pacman.conf
     fi
 
-    
+    echo
+    echo "Adding content from personal folder..."
+    echo
+    cp -rf ../personal/ $buildFolder/archiso/airootfs/
+
+    if test -f $buildFolder/archiso/airootfs/personal/.gitkeep; then
+        echo
+        rm $buildFolder/archiso/airootfs/personal/.gitkeep
+        echo ".gitkeep removed!"
+        echo
+    fi
+
+echo
+echo "*********************************************************************************"
+tput setaf 3
+echo "STEP 5 : "
+echo "- Changing All Refernces"
+echo "- Adding time to /etc/dev-rel"
+tput sgr0
+echo "*********************************************************************************"
+echo
+
+    # Let's set some variables
+    # I am retrieving information from profiledef.sh
+
+    # profiledef.sh
+    oldname1='iso_name="snigdhaos-arctic"'
+    newname1='iso_name="snigdhaos-arctic"'
+
+    oldname2='iso_name="snigdhaos-arctic"'
+    newname2='iso_name="snigdhaos-arctic"'
+
+    oldname3='Snigdha OS'
+    newname3='Snigdha OS'
+
+    # Hostname
+    oldname4='Snigdha OS'
+    newname4='Snigdha OS'
+
+    echo "Changing All References..."
+    sed -i 's/'$oldname1'/'$newname1'/g'$buildFolder/archiso/profiledef.sh
+    sed -i 's/'$oldname2'/'$newname2'/g'$buildFolder/archiso/profiledef.sh
+    sed -i 's/'$oldname3'/'$newname3'/g'$buildFolder/archiso/profiledef.sh
+    sed -i 's/'$oldname4'/'$newname4'/g'$buildFolder/archiso/profiledef.sh
+
+    echo ""

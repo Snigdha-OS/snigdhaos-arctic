@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # exit on error [immidiate]
-set -e
+# set -e
 
 # Author : Eshan Roy <eshan@snigdhaos.org>
 # Author URL : https://eshanized.github.io/

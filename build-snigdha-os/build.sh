@@ -234,4 +234,76 @@ echo
     sed -i 's/'$oldname3'/'$newname3'/g'$buildFolder/archiso/profiledef.sh
     sed -i 's/'$oldname4'/'$newname4'/g'$buildFolder/archiso/profiledef.sh
 
-    echo ""
+    echo "Adding time to /etc/dev-rel"
+    buildDate=$(date -d now)
+    echo "ISO Build Date: "$buildDate
+    sudo sed -i "s/\(^ISO_BUILD=\).*/\1$buildDate/" $buildFolder/archiso/airootfs/etc/dev-rel
+
+echo
+echo "*********************************************************************************"
+tput setaf 2
+echo "STEP 6 : "
+echo "- Cleaning Cache"
+tput sgr0
+echo "*********************************************************************************"
+echo
+
+    echo "Cleaning cache..."
+    yes | sudo pacman -Scc
+
+echo
+echo "*********************************************************************************"
+tput setaf 2
+echo "STEP 7 : "
+echo "- Building ISO. It will take time..."
+tput sgr0
+echo "*********************************************************************************"
+echo
+
+    [ -d $buildFolder ] || mkdir $outputFolder
+    cd $buildFolder/archiso/
+    sudo mkarchiso -v -w $buildFolder -o $outputFolder $buildFolder/archiso/
+
+echo
+echo "*********************************************************************************"
+tput stetaf 2
+echo "STEP 8 : "
+echo "- Creating checksums"
+echo "- Copying pkglist"
+tput sgr0
+echo "*********************************************************************************"
+echo
+
+    cd $outputFolder
+    echo "Creating Checksums: "$isoLabel
+    echo "*********************************************************************************"
+    echo
+    echo "sha1sum..."
+    sha1sum $isoLabel | tee $isoLabel.sha1
+    echo "--------------------------------"
+    echo "Sha256Sum..."
+    Sha256Sum $isoLabel | tee $isoLabel.sha256
+    echo "--------------------------------"
+    echo "md5sum...."
+    md5sum $isoLabel | tee $isoLabel.md5
+    echo 
+    echo "Copying pkglist..."
+    cp $buildFolder/iso/arch/pkglist.x86_64.txt $outputFolder/$isoLabel".pkglist.txt"
+echo
+echo "*********************************************************************************"
+tput setaf 2
+echo "FINAL STEP : "
+echo "Check a few things"
+tput sgr0
+echo "*********************************************************************************"
+echo
+    echo "Deleting previous build folder..."
+    [ -d $buildFolder ] && sudo rm -rf $buildFolder
+echo
+echo "*********************************************************************************"
+tput setaf 2
+echo "DONE!!!!!!"
+echo "Check output folder: "$outputFolder
+tput sgr0
+echo "*********************************************************************************"
+echo

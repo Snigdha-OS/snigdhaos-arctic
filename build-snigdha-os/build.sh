@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#exit on error [immidiate]
-set -e
+# exit on error [immidiate]
+# set -e
 
 # Author : Eshan Roy <eshan@snigdhaos.org>
 # Author URL : https://eshanized.github.io/
@@ -17,7 +17,7 @@ echo
 
     # Set the Environment here ->
     desktop="gnome"
-    dmDesktop="gdm"
+    dmDesktop="gnome"
 
     snigdhaosVersion='v5.0'
     build='arctic'
@@ -35,13 +35,13 @@ echo
     personalrepo=false
 
     echo "*********************************************************************************"
-    echo "Building Desktop"$desktop
-    echo "Building Version"$snigdhaosVersion
-    echo "ISO Label"$isoLabel
-    echo "Checking Current Archiso Version"$archisoVersion
-    echo "Required Version"$requiredArchisoVersion
-    echo "Build Folder"$buildFolder
-    echo "Output Folder"$outputFolder
+    echo "Building Desktop "$desktop
+    echo "Building Version "$snigdhaosVersion
+    echo "ISO Label "$isoLabel
+    echo "Checking Current Archiso Version "$archisoVersion
+    echo "Required Version "$requiredArchisoVersion
+    echo "Build Folder "$buildFolder
+    echo "Output Folder "$outputFolder
     echo "*********************************************************************************"
 
     # Let's download archiso if not installed!
@@ -64,7 +64,7 @@ echo
 echo "*********************************************************************************"
 tput setaf 2
 echo "STEP 2 : "
-echo "- Checking whether Archiso is installed or not!"
+echo "- Installing Archiso"
 echo "- Saving Latest Archiso Version to readme!"
 echo "- Making Archiso verbose!"
 tput sgr0
@@ -108,7 +108,7 @@ echo
 
     echo 
     echo "Saving Downloaded archiso version to readme..."
-    sudo sed -i "s/\(^archiso-version=\).*/\1 $archisoVersion/" ../archiso.readme
+    sudo sed -i "s/\(^archiso-version=\).*/\1$archisoVersion/" ../archiso.readme
     echo
     echo "Making Archiso Verbose"
     sudo sed -i 's/quiet="y"/quiet="n"/g' /usr/bin/mkarchiso
@@ -229,10 +229,10 @@ echo
     newname4='Snigdha OS'
 
     echo "Changing All References..."
-    sed -i 's/'$oldname1'/'$newname1'/g'$buildFolder/archiso/profiledef.sh
-    sed -i 's/'$oldname2'/'$newname2'/g'$buildFolder/archiso/profiledef.sh
-    sed -i 's/'$oldname3'/'$newname3'/g'$buildFolder/archiso/profiledef.sh
-    sed -i 's/'$oldname4'/'$newname4'/g'$buildFolder/archiso/profiledef.sh
+    sed -i 's/'$oldname1'/'$newname1'/g' $buildFolder/archiso/profiledef.sh
+    sed -i 's/'$oldname2'/'$newname2'/g' $buildFolder/archiso/profiledef.sh
+    sed -i 's/'$oldname3'/'$newname3'/g' $buildFolder/archiso/airootfs/etc/dev-rel
+    sed -i 's/'$oldname4'/'$newname4'/g' $buildFolder/archiso/airootfs/etc/hostname
 
     echo "Adding time to /etc/dev-rel"
     buildDate=$(date -d now)

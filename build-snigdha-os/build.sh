@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # exit on error [immidiate]
-# set -e
+set -e
 
 # Author : Eshan Roy <eshan@snigdhaos.org>
 # Author URL : https://eshanized.github.io/
@@ -229,6 +229,7 @@ echo
     newname4='Snigdha OS'
 
     echo "Changing All References..."
+    echo
     sed -i 's/'$oldname1'/'$newname1'/g' $buildFolder/archiso/profiledef.sh
     sed -i 's/'$oldname2'/'$newname2'/g' $buildFolder/archiso/profiledef.sh
     sed -i 's/'$oldname3'/'$newname3'/g' $buildFolder/archiso/airootfs/etc/dev-rel
@@ -266,7 +267,7 @@ echo
 
 echo
 echo "*********************************************************************************"
-tput stetaf 2
+tput setaf 2
 echo "STEP 8 : "
 echo "- Creating checksums"
 echo "- Copying pkglist"

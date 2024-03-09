@@ -53,3 +53,10 @@ xfsprogs
 xorg-server
 xorg-xinit
 #################### Snigdha OS Base ####################
+
+#################### SNIGHA OS NVIDIA ###################
+nvidia-dkms
+nvidia-utils
+nvidia-settings
+egl-wayland
+#################### SNIGHA OS NVIDIA ###################

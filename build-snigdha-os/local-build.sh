@@ -39,4 +39,20 @@ echo
     echo "Building Folder                   :   "$buildFolder
     echo "Output Folder                     :   "$outputFolder
     echo "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+
+    if [ "$archisoVersion" == "$requiredArchisoVersion" ]; then
+        tput setaf 2
+        echo "oooooooooooooooooooooooooooooooooooooooooooo"
+        echo "Required Archiso Version Satisfied..."
+        echo "oooooooooooooooooooooooooooooooooooooooooooo"
+        tput sgr0
+    else
+    tput setaf 1
+    echo "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+    echo "Archiso Required Version Not Found!!!"
+    echo "Update or Installing Archiso..."
+    sudo pacman -Syyu
+    sudo pacman -S archiso --noconfirm --needed
+    echo
+    fi
 echo

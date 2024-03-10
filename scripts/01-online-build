@@ -44,5 +44,5 @@ echo
 echo
 echo -e "[INFO] Building Snigdha OS !"
 echo
-
+    cd ..
     sudo mkarchiso -v -w build/ -o output/ archiso/

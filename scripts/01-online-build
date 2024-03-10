@@ -6,6 +6,7 @@
 echo
 echo -e "[Check] Archiso Version !"
 echo 
+
     PACKAGE="archiso"
     REQ_ARCHISO="archiso 75-1"
     CUR_ARCHISO=$(sudo pacman -Q archiso)
@@ -44,5 +45,6 @@ echo
 echo
 echo -e "[INFO] Building Snigdha OS !"
 echo
+
     cd ..
     sudo mkarchiso -v -w build/ -o output/ archiso/

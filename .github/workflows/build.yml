@@ -16,10 +16,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # - name: Install dependencies
-    #   run: |
-    #     sudo pacman -Syu --noconfirm
-    #     sudo pacman -S --noconfirm archiso git
+    - name: Install dependencies
+      run: |
+        sudo pacman -S --noconfirm archiso git
 
     - name: Clone ArchISO repository
       run: git clone https://github.com/Snigdha-OS/snigdhaos-arctic.git

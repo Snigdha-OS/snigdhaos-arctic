@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Install Git
         run: |
+          pacman -Syy --noconfirm
           pacman -S --noconfirm git
       - uses: actions/checkout@v3
         with:

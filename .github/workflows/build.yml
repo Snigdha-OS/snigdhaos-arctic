@@ -1,42 +1,33 @@
-name: Build ArchISO Stable
+name: Build ArchISO
+
 on:
   push:
     branches:
       - master
-  workflow_dispatch:
-  schedule:
-     - cron:  '0 0 */21 * *'
-  
+
 jobs:
   build:
-    env:
-      SNIGDHAOS_VERSION: 'arctic'
-      ISO_VERSION: 'v5.0'
-      ISO_ARCHITECTURE: 'x86_64'
     runs-on: ubuntu-latest
-    container:
-      image: snigdhaos/base-devel:latest
-      options: --privileged 
+
     steps:
-      - name: Checkout files
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Init Pacman Keys
-        run: | 
-          rm -rf /etc/pacman.d/gnupg
-          pacman-key --init
-          pacman-key --populate
-          pacman -Syy
+    - name: Install dependencies
+      run: |
+        sudo pacman -Syu --noconfirm
+        sudo pacman -S --noconfirm archiso git
 
-      - name: Install rate-mirrors
-        run: pacman -Syyu --noconfirm rate-mirrors
+    - name: Clone ArchISO repository
+      run: git clone https://github.com/Snigdha-OS/snigdhaos-arctic.git
 
-      - name: Install archiso
-        run: pacman -Syyu --noconfirm archiso git rsync
-        
-      - name: Build ISO
-        run: |
-          cd installation-scripts
-          ./build-the-iso-the-first-time.sh
-          
-      
+    - name: Build ArchISO image
+      run: |
+        cd scripts
+        sudo ./01-online-build
+
+    - name: Upload built ISO artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: snigdhaos-arctic
+        path: output/*.iso

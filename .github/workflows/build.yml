@@ -1,4 +1,42 @@
-name: Build Snigdha OS ISO
-
+name: Build ArchISO Stable
 on:
+  push:
+    branches:
+      - master
   workflow_dispatch:
+  schedule:
+     - cron:  '0 0 */21 * *'
+  
+jobs:
+  build:
+    env:
+      SNIGDHAOS_VERSION: 'arctic'
+      ISO_VERSION: 'v5.0'
+      ISO_ARCHITECTURE: 'x86_64'
+    runs-on: ubuntu-latest
+    container:
+      image: snigdhaos/base-devel:latest
+      options: --privileged 
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v4
+
+      - name: Init Pacman Keys
+        run: | 
+          rm -rf /etc/pacman.d/gnupg
+          pacman-key --init
+          pacman-key --populate
+          pacman -Syy
+
+      - name: Install rate-mirrors
+        run: pacman -Syyu --noconfirm rate-mirrors
+
+      - name: Install archiso
+        run: pacman -Syyu --noconfirm archiso git rsync
+        
+      - name: Build ISO
+        run: |
+          cd installation-scripts
+          ./build-the-iso-the-first-time.sh
+          
+      

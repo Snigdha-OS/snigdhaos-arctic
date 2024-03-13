@@ -15,10 +15,11 @@ jobs:
           pacman -Syy --noconfirm
           pacman -S --noconfirm git
           pacman -S --noconfirm archiso
+          pacman -S --noconfirm git
       - uses: actions/checkout@v3
         with:
           fetch-depth: 1
       - name: Build snigdha os
         run: |
           cd scripts
-          ./02-github-build
+          ./01-github-build

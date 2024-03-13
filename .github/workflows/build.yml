@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: archlinux
+      options: --privileged
 
     steps:
     - name: Checkout repository

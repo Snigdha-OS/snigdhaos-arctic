@@ -1,0 +1,50 @@
+#!/usr/bin/bash
+
+# Author            : Eshan Roy
+# Author URL        : https://eshanized.github.io/
+
+echo
+echo -e "[Check] Archiso Version !"
+echo 
+
+    PACKAGE="archiso"
+    REQ_ARCHISO="archiso 75-1"
+    CUR_ARCHISO=$(pacman -Q archiso)
+
+    if [ "$CUR_ARCHISO" == "$REQ_ARCHISO"  ]; then
+        echo -e "[INFO] Required ISO Version is Installed !"
+    elif ! pacman -Qi $PACKAGE &> /dev/null; then
+        echo -e "\033[0;31m[NOT FOUND] Archiso not Installed !\033[0m" 
+    else
+        echo -e "\033[0;31m[WARNING] Archiso not installed or Doesn't Meet Required Version !\033[0m"
+    fi
+
+echo
+echo "------------------------------------------------------"
+echo -e "[CHECK] Required Archiso Version !"
+echo -e "[CHECK] Archiso Installation !"
+echo -e "[INSTALL] Archiso Install !"
+echo -e "[CHECK] Installation Sucessfull !"
+echo "------------------------------------------------------"
+echo
+
+    if pacman -Qi "$PACKAGE" &> /dev/null; then
+        echo -e "[INFO] Required ISO Version is Installed !"
+    else
+        echo -e "\033[1;36m[INSTALLING] Archiso via Pacman !\033[0m"
+        pacman -S --noconfirm "$PACKAGE"
+    fi
+
+    if pacman -Qi "$PACKAGE" &> /dev/null; then
+        echo -e "[SUCCESS] Installtion Successfull !"
+    else
+        echo -e "\033[0;31m[ERROR] Installation was not Sucessfull !\033[0m"
+        exit 1
+    fi
+
+echo
+echo -e "[INFO] Building Snigdha OS !"
+echo
+
+    cd ..
+    mkarchiso -v -w build/ -o output/ archiso/

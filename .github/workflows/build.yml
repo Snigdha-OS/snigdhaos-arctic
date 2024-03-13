@@ -18,7 +18,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo pacman -S --noconfirm archiso git
+        pacman -S --noconfirm archiso git
 
     - name: Clone ArchISO repository
       run: git clone https://github.com/Snigdha-OS/snigdhaos-arctic.git
@@ -26,7 +26,7 @@ jobs:
     - name: Build ArchISO image
       run: |
         cd scripts
-        sudo ./01-online-build
+        ./01-online-build
 
     - name: Upload built ISO artifact
       uses: actions/upload-artifact@v2

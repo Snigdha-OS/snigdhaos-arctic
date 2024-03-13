@@ -1,35 +1,22 @@
-name: Build ArchISO
+name: Snigdha OS Arctic
 
 on:
   push:
-    branches:
-      - master
+    branches: master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    # container:
-    #   image: archlinux
-    #   options: --privileged
-
+    container:
+      image: archlinux:latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: |
-        pacman -S --noconfirm archiso git
-
-    - name: Clone ArchISO repository
-      run: git clone https://github.com/Snigdha-OS/snigdhaos-arctic.git
-
-    - name: Build ArchISO image
-      run: |
-        cd scripts
-        ./01-online-build
-
-    - name: Upload built ISO artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: snigdhaos-arctic
-        path: output/*.iso
+      - name: Install Git
+        run: |
+          pacman -S --noconfirm git
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: Build snigdha os
+        run: |
+          cd scripts
+          ./01-online-build

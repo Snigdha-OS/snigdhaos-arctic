@@ -21,4 +21,4 @@ jobs:
       - name: Build snigdha os
         run: |
           cd scripts
-          ./01-online-build
+          ./02-github-build

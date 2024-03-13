@@ -1,40 +1,4 @@
-# This workflow will build Snigdha OS ISO file with the commit on it
-
 name: Build Snigdha OS ISO
 
 on:
-  push:
-    branches:
-      - master
-      
-  pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - '**.editorconfig'
-      - '**.gitignore'
-      - '**.md'
-      - 'LICENSE'
-      - 'PKGBUILD'
-  release:
-    types:
-      - created
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image: archlinux:latest
-      options: --privileged
-    steps:
-      - uses: actions/checkout@v4
-      - run: pwd
-      - run: find .
-      - run: cat /etc/os-release
-      - run: pacman-key --init
-      - run: pacman --noconfirm -Sy archlinux-keyring
-      - run: pacman --noconfirm -S snigdhaos-keyring
-      - run: ./build_iso.sh
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Arch Live ISO
-          path: /tmp/archlive/out/*.iso
+  workflow_dispatch:

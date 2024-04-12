@@ -7,7 +7,6 @@ body:
       value: |
         Common reasons for proposals include:
 
-        - Altering the infrastructure (e.g. swapping Webpack out with other bundlers);
         - Bumping a critical dependency's major version;
         - A significant improvement to a CLI command;
         - Significant refactor;
@@ -19,7 +18,7 @@ body:
     attributes:
       label: Have you read the Contributing Guidelines on issues?
       options:
-        - label: I have read the [Contributing Guidelines on issues](https://github.com/facebook/docusaurus/blob/main/CONTRIBUTING.md#issues).
+        - label: I have read the [Contributing Guidelines](https://snigdha-os.github.io/documentation/introduction/contributing).
           required: true
 
   - type: textarea

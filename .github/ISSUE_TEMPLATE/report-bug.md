@@ -27,9 +27,9 @@ A clear and concise description of what is happening.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+ - OS: [e.g. Snigdha OS]
+ - Build ID: [e.g. ARCTIC]
+ - Version: [e.g. 5.0]
 
 **Additional context**
 Add any other context about the problem here.

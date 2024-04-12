@@ -12,7 +12,7 @@ body:
         - Do I have basic ideas about where it goes wrong? (e.g dir)
         - Could it be because of my own mistakes?
 
-        **The GitHub issue tracker is not a support forum**. If you are not sure whether it could be your mistakes, ask in the [Snigdha OS Forum](https://forum.snigdhaos.org/) first. The quickest way to verify whether it's a Docusaurus defect is through a **reproduction**, starting with a fresh installation and making changes until the bug is reproduced.
+        **The GitHub issue tracker is not a support forum**. If you are not sure whether it could be your mistakes, ask in the [Snigdha OS Forum](https://forum.snigdhaos.org/) first. The quickest way to verify whether the problem is of Snigdha OS is through a **reproduction**, starting with a fresh installation(note: install on virtual machine) and making changes until the bug is reproduced.
 
         Make the bug obvious. Ideally, we should be able to understand it without running any code.
 

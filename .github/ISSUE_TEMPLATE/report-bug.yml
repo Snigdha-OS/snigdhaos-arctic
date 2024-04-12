@@ -93,16 +93,16 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: checkboxes
     attributes:
-      label: Your environment
-      description: Include as many relevant details about the environment you experienced the bug in.
-      value: |
-        - Public source code:
-        - Public site URL:
-        - Docusaurus version used:
-        - Environment name and version (e.g. Chrome 89, Node.js 16.4):
-        - Operating system and version (e.g. Ubuntu 20.04.2 LTS):
+      label: Prerequisites
+      description: Please check the following items before creating a issue. This way we know you've done these steps first.
+      options:
+        - label: I'm using the latest version of **Snigdha OS**.
+          required: true
+        - label: I have reinstalled **Snigdha OS**.
+        - label: I have tried the `upgrade` or `update` command.
+        - label: I have read the console error message carefully (if applicable).
 
   - type: checkboxes
     attributes:

@@ -1,5 +1,5 @@
 name: 🐛 Bug Report
-description: Submit a bug report to help us improve
+description: Help us to improve Snigdha OS
 labels: [bug, 'status: needs triage']
 body:
   - type: markdown

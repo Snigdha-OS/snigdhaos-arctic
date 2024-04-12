@@ -20,7 +20,6 @@ body:
         - A repro repository to inspect the code
         - An url to see the problem live (if possible)
 
-        Pro tip: create a reproducible demo of the bug with https://new.docusaurus.io.
 
   - type: checkboxes
     attributes:

@@ -33,11 +33,10 @@ body:
       label: Prerequisites
       description: Please check the following items before creating a issue. This way we know you've done these steps first.
       options:
-        - label: I'm using the latest version of Docusaurus.
+        - label: I'm using the latest version of **Snigdha OS**.
           required: true
-        - label: I have tried the `npm run clear` or `yarn clear` command.
-        - label: I have tried `rm -rf node_modules yarn.lock package-lock.json` and re-installing packages.
-        - label: I have tried creating a repro with https://new.docusaurus.io.
+        - label: I have reinstalled **Snigdha OS**.
+        - label: I have tried the `upgrade` or `update` command.
         - label: I have read the console error message carefully (if applicable).
 
   - type: textarea

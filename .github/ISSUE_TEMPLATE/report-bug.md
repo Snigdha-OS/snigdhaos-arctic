@@ -6,7 +6,7 @@ labels: bug
 assignees: eshanized
 ---
 
-**Describe the bug**
+**DESCRIPTION(Required):**
 
 A clear and concise description of what the bug is.
 

@@ -65,9 +65,9 @@ body:
       label: Steps to reproduce
       description: Write down the steps to reproduce the bug. You should start with a fresh installation, or your git repository linked above.
       placeholder: |
-        1. Step 1...
-        2. Step 2...
-        3. Step 3...
+        Step 1:
+        Step 2:
+        Step 3:
     validations:
       required: true
 

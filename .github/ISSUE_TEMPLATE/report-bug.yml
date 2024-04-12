@@ -97,13 +97,15 @@ body:
   - type: textarea
     attributes:
       label: Your PC Specification
-      description: Include as many relevant details about the environment you experienced the bug in.
+      description: |
+        Include as many relevant details about the environment you experienced the bug in.
+        > run `cat /etc/os-release` on terminal to see **OS Build ID**
       value: |
-        - Public source code:
-        - Public site URL:
-        - Docusaurus version used:
-        - Environment name and version (e.g. Chrome 89, Node.js 16.4):
-        - Operating system and version (e.g. Ubuntu 20.04.2 LTS):
+        - CPU: [e.g i5 1335U]
+        - RAM: [e.g 2 GiB]
+        - STORAGE: [e.g SSD/HDD]
+        - Snigdha OS Build: [e.g arctic]
+        - Snigdha OS Version: [e.g 4.5]
 
   - type: checkboxes
     attributes:

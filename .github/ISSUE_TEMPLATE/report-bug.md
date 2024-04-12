@@ -1,5 +1,5 @@
 ---
-name: Report Bug
+name: 🐛 Report Bugs
 about: Help us to improve Snigdha OS!
 title: ''
 labels: bug

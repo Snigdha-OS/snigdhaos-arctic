@@ -93,7 +93,7 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: checkbox
     attributes:
       label: Your environment
       description: Include as many relevant details about the environment you experienced the bug in.

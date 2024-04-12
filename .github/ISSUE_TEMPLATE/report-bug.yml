@@ -5,14 +5,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Please help us help you!
+        ## First Thing First!
 
-        Before filing your issue, ask yourself:
-        - Is this clearly a problem of **Snigdha OS**?
-        - Do I have basic ideas about where it goes wrong? (For example, if there are stack traces, are they pointing to one file?)
+        Before filing any issue, ask yourself:
+        - Is this clearly a problem of **Snigdha OS**? (e.g rootfs)
+        - Do I have basic ideas about where it goes wrong? (e.g dir)
         - Could it be because of my own mistakes?
 
-        **The GitHub issue tracker is not a support forum**. If you are not sure whether it could be your mistakes, ask in the [Discord server](https://discord.gg/docusaurus) or [GitHub discussions](https://github.com/facebook/docusaurus/discussions) first. The quickest way to verify whether it's a Docusaurus defect is through a **reproduction**, starting with a fresh installation and making changes until the bug is reproduced.
+        **The GitHub issue tracker is not a support forum**. If you are not sure whether it could be your mistakes, ask in the [Snigdha OS Forum](https://forum.snigdhaos.org/) first. The quickest way to verify whether it's a Docusaurus defect is through a **reproduction**, starting with a fresh installation and making changes until the bug is reproduced.
 
         Make the bug obvious. Ideally, we should be able to understand it without running any code.
 

@@ -1,6 +1,6 @@
 name: 🐛 Bug Report
 description: Help us to improve Snigdha OS
-labels: [bug, 'status: needs triage']
+labels: [bug]
 body:
   - type: markdown
     attributes:
@@ -8,7 +8,7 @@ body:
         ## Please help us help you!
 
         Before filing your issue, ask yourself:
-        - Is this clearly a Docusaurus defect?
+        - Is this clearly a problem of **Snigdha OS**?
         - Do I have basic ideas about where it goes wrong? (For example, if there are stack traces, are they pointing to one file?)
         - Could it be because of my own mistakes?
 

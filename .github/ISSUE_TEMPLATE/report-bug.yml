@@ -38,6 +38,7 @@ body:
         - label: I have reinstalled **Snigdha OS**.
         - label: I have tried the `upgrade` or `update` command.
         - label: I have read the console error message carefully (if applicable).
+        - label: I am not using virtual machine.
 
   - type: textarea
     attributes:
@@ -95,7 +96,7 @@ body:
 
   - type: textarea
     attributes:
-      label: Your environment
+      label: Your PC Specification
       description: Include as many relevant details about the environment you experienced the bug in.
       value: |
         - Public source code:

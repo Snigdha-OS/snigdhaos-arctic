@@ -50,8 +50,6 @@ body:
     attributes:
       label: Reproducible demo
       description: |
-        Paste the link to an example repo, including a `docusaurus.config.js`, and exact instructions to reproduce the issue. It can either be a playground link created from https://new.docusaurus.io, or a git repository.
-
         > **What happens if you skip this step?** Someone will read your bug report, and maybe will be able to help you, but it’s unlikely that it will get much attention from the team. Eventually, the issue will likely get closed in favor of issues that have reproducible demos.
 
         Please remember that:

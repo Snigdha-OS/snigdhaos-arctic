@@ -1,5 +1,5 @@
 name: 💥 Proposal
-description: Propose a non-trivial change to **Snigdha OS**
+description: Propose a non-trivial change to Snigdha OS
 labels: [proposal]
 body:
   - type: markdown
@@ -13,9 +13,7 @@ body:
         - Significant refactor;
         - ...
 
-        Remember, this is not for feature requests. We give you maximum freedom to write an elaborated proposal illustrating why you think the change is beneficial for us, and what steps we should take to turn this into reality.
-
-        You should not use this to ditch the feature request or bug template; such action could make us identify the issue wrongly and close it without doing anything.
+        Remember, this is not for feature requests. We give you maximum freedom to write an elaborated proposal illustrating why you think the change is beneficial for us and for users, and what steps we should take to turn this into reality. You should not use this to ditch the feature request or bug template; such action could make us identify the issue wrongly and close it without doing anything.
 
   - type: checkboxes
     attributes:

@@ -1,10 +1,6 @@
 # Code Of Conduct
 A code of conduct outlines expected behavior and guidelines for individuals within a specific community, organization, or group. 
 
-:::info
-It is mandatory to follow our **Code of Conduct**.
-:::
-
 **Introduction:**
 [Snigdha OS Forum](https://forum.snigdhaos.org/) is dedicated to providing a respectful, inclusive, and safe environment for all members, regardless of race, ethnicity, gender, sexual orientation, disability, age, religion, or any other characteristic. This Code of Conduct outlines the principles and guidelines that all members are expected to follow to maintain a positive and welcoming atmosphere.
 

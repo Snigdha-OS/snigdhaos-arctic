@@ -1,7 +1,7 @@
 ---
-name: 🐛 Report Bugs
+name: 🐛 Report Bug
 about: Help us to improve Snigdha OS!
-title: ''
+title: 'Report Bug'
 labels: bug
 assignees: eshanized
 

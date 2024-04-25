@@ -52,11 +52,15 @@ wpa_supplicant
 xfsprogs
 xorg-server
 xorg-xinit
-#################### Snigdha OS Base ####################
+#################### SNIGDHA OS BASE ####################
 
-#################### SNIGHA OS NVIDIA ###################
+#################### SNIGHA OS NVIDIA ####################
 nvidia-dkms
 nvidia-utils
 nvidia-settings
 egl-wayland
 #################### SNIGHA OS NVIDIA ###################
+
+#################### SNIGDHA OS EXTRA ###################
+file-roller
+laptop-detect

@@ -1,4 +1,4 @@
-name: Snigdha OS Commitizen Check
+name: Snigdha OS Commitizen Check on Push
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   commitizen_check:
-    name: Check Commitizen Commit
+    name: Check Commitizen Commit on Push
     runs-on: ubuntu-latest
 
     steps:

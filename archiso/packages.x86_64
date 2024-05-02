@@ -54,7 +54,7 @@ xorg-server
 xorg-xinit
 #################### SNIGDHA OS BASE ####################
 
-#################### SNIGHA OS NVIDIA ####################
+#################### SNIGHA OS NVIDIA ###################
 nvidia-dkms
 nvidia-utils
 nvidia-settings
@@ -64,3 +64,14 @@ egl-wayland
 #################### SNIGDHA OS EXTRA ###################
 file-roller
 laptop-detect
+#################### SNIGDHA OS EXTRA ###################
+
+################### SNIGHA OS CHAOTIC ###################
+chaotic-keyring
+chaotic-mirrorlist
+################### SNIGHA OS CHAOTIC ###################
+
+################### SNIGHA OS SELF ######################
+rate-mirrors
+snigdhaos-gnome-ui
+

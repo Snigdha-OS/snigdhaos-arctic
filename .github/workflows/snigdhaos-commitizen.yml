@@ -1,7 +1,7 @@
 name: Snigdha OS Commitizen Check
 
 on:
-  pull_request:
+  push:
     branches:
       - master
 

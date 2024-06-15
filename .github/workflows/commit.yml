@@ -28,17 +28,14 @@ jobs:
 
           for type in "${conventional_types[@]}"; do
             echo "Searching for pattern: ${commit_emojis[$type]} ${type}(:|:)"
-            if echo "$LATEST_COMMIT_MESSAGE" | awk -v emoji="${commit_emojis[$type]}" -v type="$type" '
-              $0 ~ "^" emoji " " type "(:|:)" { print "Conventional commit message found: " $0; exit 0 }
-            '; then
-              :
-            else
-              :
+            if echo "$LATEST_COMMIT_MESSAGE" | grep -qE "^${commit_emojis[$type]} ${type}(:|:)" ; then
+              echo "Conventional commit message found: $LATEST_COMMIT_MESSAGE"
+              exit 0
             fi
           done
 
           echo "Error: Commit message is not conventional"
           exit 1
-        # shell: /usr/bin/bash -e
-        # env:
-        #   LATEST_COMMIT_MESSAGE: 🔧 fix(workflows): debug for continued issue
+        shell: /usr/bin/bash -e
+        env:
+          LATEST_COMMIT_MESSAGE: 🔧 fix(workflows): debug for continued issue

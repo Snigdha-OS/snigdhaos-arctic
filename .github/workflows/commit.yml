@@ -37,5 +37,3 @@ jobs:
           echo "Error: Commit message is not conventional"
           exit 1
         shell: /usr/bin/bash -e
-        env:
-          LATEST_COMMIT_MESSAGE: 🔧 fix(workflows): debug for continued issue

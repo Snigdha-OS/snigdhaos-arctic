@@ -28,7 +28,7 @@ jobs:
 
           for type in "${conventional_types[@]}"; do
             echo "Searching for pattern: ${commit_emojis[$type]} ${type}(:|:)"
-            if echo "$LATEST_COMMIT_MESSAGE" | grep -qE "^${commit_emojis[$type]} ${type}(:|:)" ; then
+            if echo "$LATEST_COMMIT_MESSAGE" | grep -qE "^${commit_emojis[$type]} ${type}(:|:)"; then
               echo "Conventional commit message found: $LATEST_COMMIT_MESSAGE"
               exit 0
             fi

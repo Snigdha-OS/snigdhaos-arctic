@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the conventional commit types with emojis
-TYPES=("feat 🎉" "fix 🐞" "docs 📚" "style 💅" "refactor 🔨" "perf ⚡️" "test 🧪" "build 🛠️" "ci 🤖" "chore 🧹" "revert ⏪️")
+TYPES=("🎉 feat" "🐞 fix" "📚 docs" "💅 style" "🔨 refactor" "⚡️ perf" "🧪 test" "🛠️ build" "🤖 ci" "🧹 chore" "⏪️ revert")
 
 # Prompt the user to select a commit type
 echo "Select a commit type:"
@@ -11,8 +11,8 @@ done
 
 # Extract the commit type and emoji from the selection
 type_emoji=${type}
-type=${type_emoji% *}
-emoji=${type_emoji#* }
+type=${type_emoji#* }
+emoji=${type_emoji% *}
 
 # Prompt the user to enter a scope (optional)
 read -p "Enter a scope (optional): " scope
@@ -24,7 +24,7 @@ read -p "Enter a short description: " desc
 read -p "Enter a longer description (optional): " long_desc
 
 # Create the commit message
-commit_msg="[$type($scope)] $desc $emoji"
+commit_msg="$emoji [$type($scope)] $desc"
 
 # If a longer description was provided, add it to the commit message
 if [ -n "$long_desc" ]; then

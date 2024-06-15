@@ -24,7 +24,7 @@ read -p "Enter a short description: " desc
 read -p "Enter a longer description (optional): " long_desc
 
 # Create the commit message
-commit_msg="$emoji [$type($scope)] $desc"
+commit_msg="$emoji $type($scope): $desc"
 
 # If a longer description was provided, add it to the commit message
 if [ -n "$long_desc" ]; then

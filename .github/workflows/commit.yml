@@ -3,38 +3,50 @@ name: Conventional Commit Checker
 on:
   push:
     branches:
-      - main
       - master
-      - development
+  pull_request:
+    branches:
+      - master
 
 jobs:
   conventional-commit-checker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Get latest commit message
-        run: |
-          LATEST_COMMIT_MESSAGE=$(git log -1 --format=%s)
-          echo "LATEST_COMMIT_MESSAGE=$LATEST_COMMIT_MESSAGE" >> $GITHUB_ENV
+        uses: actions/checkout@v4
 
       - name: Check conventional commit message
         run: |
-          conventional_types=("build" "chore" "ci" "docs" "feat" "fix" "perf" "refactor" "revert" "style" "test")
-          commit_emojis=("build"="🏗️" "chore"="🧹" "ci"="🤖" "docs"="📚" "feat"="🎉" "fix"="🔧" "perf"="⚡️" "refactor"="💡" "revert"="🚨" "style"="💄" "test"="🧪")
+          COMMIT_MSG=$(git log -1 --format=%s)
+          EMOJI=$(echo "$COMMIT_MSG" | cut -d' ' -f1)
+          TYPE=$(echo "$COMMIT_MSG" | cut -d'(' -f1 | cut -d' ' -f2-)
+          SCOPE=$(echo "$COMMIT_MSG" | cut -d'(' -f2 | cut -d')' -f1)
+          DESC=$(echo "$COMMIT_MSG" | cut -d']:' -f2-)
 
-          echo "LATEST_COMMIT_MESSAGE: $LATEST_COMMIT_MESSAGE"
+          # Check if the emoji is valid
+          if [[ " ${TYPES[*]} " =~ " ${EMOJI} " ]]; then
+            echo "Valid emoji: ${EMOJI}"
+          else
+            echo "Error: Invalid emoji. Please use one of the following: 🎉, 🐞, 📚, 💅, 🔨, ⚡️, 🧪, 🛠️, 🤖, 🧹, ⏪️"
+            exit 1
+          fi
 
-          for type in "${conventional_types[@]}"; do
-            pattern="${commit_emojis[$type]} ${type}(:|)?"
-            echo "Searching for pattern: $pattern"
-            if echo "$LATEST_COMMIT_MESSAGE" | grep -qE "^$pattern"; then
-              echo "Conventional commit message found: $LATEST_COMMIT_MESSAGE"
-              exit 0
-            fi
-          done
+          # Check if the type is valid
+          if [[ " ${TYPES[*]} " =~ " ${TYPE} " ]]; then
+            echo "Valid type: ${TYPE}"
+          else
+            echo "Error: Invalid type. Please use one of the following: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert"
+            exit 1
+          fi
 
-          echo "Error: Commit message is not conventional"
-          exit 1
-        shell: bash
+          # Check if the scope is provided
+          if [ -z "$SCOPE" ]; then
+            echo "Error: Commit scope is required"
+            exit 1
+          fi
+
+          # Check if the description is provided
+          if [ -z "$DESC" ]; then
+            echo "Error: Commit description is required"
+            exit 1
+          fi

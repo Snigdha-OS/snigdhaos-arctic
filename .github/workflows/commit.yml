@@ -36,4 +36,4 @@ jobs:
 
           echo "Error: Commit message is not conventional"
           exit 1
-        shell: /usr/bin/bash -e
+        shell: bash

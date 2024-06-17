@@ -17,5 +17,5 @@ jobs:
           GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
           GITLAB_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
         run: |
-          git remote add gitlab https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${GITLAB_REPO##*/}.git
+          git remote add gitlab https://gitlab.com/snigdhaos/snigdhaos-arctic.git
           git push gitlab master

@@ -1,4 +1,4 @@
-name: Push to GitLab
+name: Mirror to GitLab
 
 on:
   push:
@@ -6,16 +6,17 @@ on:
       - master
 
 jobs:
-  deploy:
+  mirror:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.3
-      - name: Push to GitLab
+      - name: Mirror to GitLab
         env:
           GITLAB_REPO: ${{ secrets.GITLAB_REPO }}
           GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
           GITLAB_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
         run: |
-          git remote add gitlab https://gitlab.com/snigdhaos/snigdhaos-arctic.git
-          git push gitlab master
+          git remote add gitlab https://${GITLAB_USERNAME}:${GITLAB_PASSWORD}@${GITLAB_REPO##*/}.git
+          git config --global push.default mirror
+          git push --mirror gitlab

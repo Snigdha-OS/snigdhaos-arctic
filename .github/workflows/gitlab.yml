@@ -16,5 +16,7 @@ jobs:
           GITLAB_REPO: ${{ secrets.GITLAB_REPO }}
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
-          git remote add gitlab $GITLAB_REPO
-          git push gitlab master
+          git remote add gitlab ${GITLAB_REPO##*/}
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git push gitlab master fix

@@ -1,0 +1,20 @@
+name: Push to GitLab
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+      - name: Push to GitLab
+        env:
+          GITLAB_REPO: ${{ secrets.GITLAB_REPO }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          git remote add gitlab $GITLAB_REPO
+          git push gitlab main

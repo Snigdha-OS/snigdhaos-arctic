@@ -8,7 +8,7 @@ echo -e "[Check] Archiso Version !"
 echo 
 
     PACKAGE="archiso"
-    REQ_ARCHISO="archiso 76-1"
+    REQ_ARCHISO="archiso 78-1"
     CUR_ARCHISO=$(sudo pacman -Q archiso)
 
     if [ "$CUR_ARCHISO" == "$REQ_ARCHISO"  ]; then

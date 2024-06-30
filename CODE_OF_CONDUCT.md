@@ -1,5 +1,5 @@
 # Code Of Conduct
-> You must follow the **Commitizen Commit Standard**
+
 
 A code of conduct outlines expected behavior and guidelines for individuals within a specific community, organization, or group. 
 

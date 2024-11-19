@@ -4,17 +4,47 @@ echo "############################################"
 echo "Start Snigdha OS snapper cleanup"
 echo "############################################"
 
+# Check if snapper is installed
 if [ -f /usr/bin/snapper ]; then
-	for i in {1..20};
-	do 
-		snapper --no-dbus delete "$i"
-	done
+    echo "[INFO] Snapper found, starting cleanup..."
+
+    # Get a list of all snapper snapshots and delete each one
+    SNAPSHOTS=$(snapper list | awk 'NR>2 {print $1}')  # Skip the header and get snapshot IDs
+    
+    if [ -z "$SNAPSHOTS" ]; then
+        echo "[INFO] No snapshots found to delete."
+    else
+        for snapshot in $SNAPSHOTS; do
+            echo "[INFO] Deleting snapshot #$snapshot..."
+            snapper --no-dbus delete "$snapshot"
+            if [ $? -eq 0 ]; then
+                echo "[INFO] Snapshot #$snapshot deleted successfully."
+            else
+                echo "[ERROR] Failed to delete snapshot #$snapshot."
+            fi
+        done
+    fi
+else
+    echo "[ERROR] Snapper not found. Please install Snapper."
+    exit 1
 fi
 
 echo
 echo "############################################"
-echo "End snigdhaos-snapper"
+echo "End Snigdha OS snapper cleanup"
 echo "############################################"
 echo
 
-rm -f /usr/local/bin/snigdhaos-snapper
+# Remove the snigdhaos-snapper script
+if [ -f /usr/local/bin/snigdhaos-snapper ]; then
+    echo "[INFO] Removing snigdhaos-snapper script..."
+    rm -f /usr/local/bin/snigdhaos-snapper
+    if [ $? -eq 0 ]; then
+        echo "[INFO] snigdhaos-snapper script removed."
+    else
+        echo "[ERROR] Failed to remove snigdhaos-snapper script."
+    fi
+else
+    echo "[INFO] snigdhaos-snapper script not found."
+fi
+

@@ -5,43 +5,17 @@
 
 # NOTE : Run at your own Risk!
 
-# Function to print GitHub credential configuration options
-print_options() {
-  echo "🔒 Configure GitHub Credentials:"
-  echo "1. 📝 Enter GitHub username and password"
-  echo "2. 🔑 Enter GitHub personal access token"
-  echo "3. 📁 Use existing GitHub credentials from ~/.gitconfig"
-}
+# Prompt user for GitHub username
+read -p "Enter your GitHub username: " GITHUB_USERNAME
 
-# Print options and prompt user to select
-print_options
-echo "Enter the number of your chosen option:"
-read -r OPTION
+# Prompt user for GitHub email
+read -p "Enter your GitHub email: " GITHUB_EMAIL
 
-# Handle user selection
-case $OPTION in
-  1) 
-    echo "Enter your GitHub username:"
-    read -r USERNAME
-    echo "Enter your GitHub password:"
-    read -s PASSWORD
-    git config --global credential.helper store
-    git config --global credential.username $USERNAME
-    git config --global credential.password $PASSWORD
-    ;;
-  2) 
-    echo "Enter your GitHub personal access token:"
-    read -r TOKEN
-    git config --global credential.helper store
-    git config --global credential.username "your-github-username"
-    git config --global credential.password $TOKEN
-    ;;
-  3) 
-    echo "Using existing GitHub credentials from ~/.gitconfig"
-    ;;
-  *) 
-    echo "Invalid option. Exiting."
-    exit 1;;
-esac
+# Set the global Git configuration for username and email
+git config --global user.name "$GITHUB_USERNAME"
+git config --global user.email "$GITHUB_EMAIL"
 
-echo "GitHub credentials configured successfully! 👍"
+# Confirm the changes
+echo "GitHub username and email have been configured:"
+git config --global user.name
+git config --global user.email

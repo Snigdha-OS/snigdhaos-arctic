@@ -5,46 +5,56 @@
 
 echo
 echo -e "[Check] Archiso Version !"
-echo 
+echo
 
-    PACKAGE="archiso"
-    REQ_ARCHISO="archiso 75-1"
-    CUR_ARCHISO=$(pacman -Q archiso)
+PACKAGE="archiso"
+REQ_ARCHISO_VERSION="75-1"
 
-    if [ "$CUR_ARCHISO" == "$REQ_ARCHISO"  ]; then
-        echo -e "[INFO] Required ISO Version is Installed !"
-    elif ! pacman -Qi $PACKAGE &> /dev/null; then
-        echo -e "\033[0;31m[NOT FOUND] Archiso not Installed !\033[0m" 
-    else
-        echo -e "\033[0;31m[WARNING] Archiso not installed or Doesn't Meet Required Version !\033[0m"
-    fi
+# Get the installed version of archiso
+CUR_ARCHISO_VERSION=$(pacman -Q "$PACKAGE" 2>/dev/null | awk '{print $2}')
+
+# Check if the package is installed and if the version is correct
+if [ -z "$CUR_ARCHISO_VERSION" ]; then
+    echo -e "\033[0;31m[NOT FOUND] Archiso not installed !\033[0m"
+elif [ "$CUR_ARCHISO_VERSION" == "$REQ_ARCHISO_VERSION" ]; then
+    echo -e "[INFO] Required ISO Version is Installed !"
+else
+    echo -e "\033[0;33m[WARNING] Archiso installed, but version $CUR_ARCHISO_VERSION does not match the required version ($REQ_ARCHISO_VERSION) !\033[0m"
+fi
 
 echo
 echo "------------------------------------------------------"
 echo -e "[CHECK] Required Archiso Version !"
 echo -e "[CHECK] Archiso Installation !"
 echo -e "[INSTALL] Archiso Install !"
-echo -e "[CHECK] Installation Sucessfull !"
+echo -e "[CHECK] Installation Successful !"
 echo "------------------------------------------------------"
 echo
 
-    if pacman -Qi "$PACKAGE" &> /dev/null; then
-        echo -e "[INFO] Required ISO Version is Installed !"
-    else
-        echo -e "\033[1;36m[INSTALLING] Archiso via Pacman !\033[0m"
-        pacman -S --noconfirm "$PACKAGE"
-    fi
+# Ensure Archiso is installed
+if pacman -Qi "$PACKAGE" &> /dev/null; then
+    echo -e "[INFO] Archiso is already installed."
+else
+    echo -e "\033[1;36m[INSTALLING] Archiso via Pacman !\033[0m"
+    sudo pacman -S --noconfirm "$PACKAGE"
+fi
 
-    if pacman -Qi "$PACKAGE" &> /dev/null; then
-        echo -e "[SUCCESS] Installtion Successfull !"
-    else
-        echo -e "\033[0;31m[ERROR] Installation was not Sucessfull !\033[0m"
-        exit 1
-    fi
+# Verify if installation was successful
+if pacman -Qi "$PACKAGE" &> /dev/null; then
+    echo -e "[SUCCESS] Installation Successful !"
+else
+    echo -e "\033[0;31m[ERROR] Installation was not Successful !\033[0m"
+    exit 1
+fi
 
 echo
 echo -e "[INFO] Building Snigdha OS !"
 echo
 
-    cd ..
-    mkarchiso -v -w build/ -o output/ archiso/
+# Change to the correct directory before running mkarchiso
+# Assuming the script is in the project root folder, adjust if needed
+SCRIPT_DIR=$(dirname "$0")
+cd "$SCRIPT_DIR" || exit 1  # Ensure we're in the script's directory
+
+# Running mkarchiso
+sudo mkarchiso -v -w build/ -o output/ archiso/
